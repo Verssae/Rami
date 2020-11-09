@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3709218537721579619}
   - component: {fileID: 3709218537721579620}
   - component: {fileID: 3709218537721579621}
+  - component: {fileID: 5403080071191629930}
   m_Layer: 0
   m_Name: Star
   m_TagString: Star
@@ -185,6 +186,18 @@ TilemapCollider2D:
   m_Offset: {x: 0, y: 0}
   m_MaximumTileChangeCount: 1000
   m_ExtrusionFactor: 0.00001
+--- !u!114 &5403080071191629930
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3709218537721579623}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02c6b9fdaba90484ca39312958b528ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3709218537771197450
 GameObject:
   m_ObjectHideFlags: 0
@@ -499,6 +512,7 @@ GameObject:
   - component: {fileID: 3709218538229384325}
   - component: {fileID: 3709218538229384326}
   - component: {fileID: 3709218538229384327}
+  - component: {fileID: 2471483749232817009}
   m_Layer: 0
   m_Name: Obstacle
   m_TagString: Obstacle
@@ -654,6 +668,18 @@ TilemapCollider2D:
   m_Offset: {x: 0, y: 0}
   m_MaximumTileChangeCount: 1000
   m_ExtrusionFactor: 0.00001
+--- !u!114 &2471483749232817009
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3709218538229384329}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81b6fc872278dc14395247c28cbdfcb1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3709218539054588162
 GameObject:
   m_ObjectHideFlags: 0

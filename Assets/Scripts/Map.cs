@@ -23,20 +23,13 @@ public class Map : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        string log = "";
-        foreach (var item in lastmodule)
-        {
-            log += item.name;
-        }
-        Debug.Log(log);
-        
+
     }
 
     private void FixedUpdate()
     {
-        GetComponent<Rigidbody2D>().velocity = Vector2.down * speed;
+        //GetComponent<Rigidbody2D>().velocity = Vector2.down * speed;
     }
-
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -44,12 +37,10 @@ public class Map : MonoBehaviour
         {   
             if (collision.transform.parent.GetComponent<ModuleInfo>().pass == false)
             {
-
-                collision.transform.parent.GetComponent<ModuleInfo>().pass = true;
-                
+                collision.transform.parent.GetComponent<ModuleInfo>().pass = true;      
                 if (lastmodule.Count >= volume - 1)
                 {
-                    GameObject nextmodule = Instantiate(maps[Random.Range(0, 3)], collision.transform.parent.parent);
+                    GameObject nextmodule = Instantiate(maps[Random.Range(0, maps.Length)], collision.transform.parent.parent);
                     GameObject newpoint = collision.transform.parent.GetChild(5).gameObject;
                     nextmodule.transform.position = newpoint.transform.position;
                     nextmodule.transform.GetChild(0).tag = "Start";
@@ -58,20 +49,11 @@ public class Map : MonoBehaviour
                     nextmodule.transform.GetChild(3).tag = "Obstacle";
                     nextmodule.transform.GetChild(4).tag = "Star";
                 }
-                
-
-
                 if (lastmodule.Count >= volume) {
                     Destroy(lastmodule.Dequeue());
                 }
-
-
-
                 lastmodule.Enqueue(collision.transform.parent.gameObject);
-
             }
-
-
         }
     }
 
