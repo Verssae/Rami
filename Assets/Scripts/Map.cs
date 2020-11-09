@@ -23,13 +23,7 @@ public class Map : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        string log = "";
-        foreach (var item in lastmodule)
-        {
-            log += item.name;
-        }
-        Debug.Log(log);
-        
+
     }
 
     private void FixedUpdate()
@@ -41,7 +35,8 @@ public class Map : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Start"))
-        {   
+        {
+
             if (collision.transform.parent.GetComponent<ModuleInfo>().pass == false)
             {
 
