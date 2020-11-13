@@ -9,9 +9,7 @@ public class Map : MonoBehaviour
 
     [Header("시작 시 추가한 맵 모듈 수")]
     public int volume;
-    [Header("플레이어 낙하 속도")]
-    [Range(0, 10)]
-    public float speed;
+
 
     private Queue<GameObject> lastmodule;
     // Start is called before the first frame update
@@ -42,6 +40,7 @@ public class Map : MonoBehaviour
                 {
                     GameObject nextmodule = Instantiate(maps[Random.Range(0, maps.Length)], collision.transform.parent.parent);
                     GameObject newpoint = collision.transform.parent.GetChild(5).gameObject;
+                    Debug.Log(newpoint.name);
                     nextmodule.transform.position = newpoint.transform.position;
                     nextmodule.transform.GetChild(0).tag = "Start";
                     nextmodule.transform.GetChild(1).tag = "LTree";

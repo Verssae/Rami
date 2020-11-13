@@ -74,7 +74,7 @@ public class Movement : MonoBehaviour
             side = -1;
         }
 
-        Debug.Log(GetComponent<Rigidbody2D>().velocity.magnitude);
+        //Debug.Log(GetComponent<Rigidbody2D>().velocity.magnitude);
     }
 
 
