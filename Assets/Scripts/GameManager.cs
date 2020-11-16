@@ -4,51 +4,59 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
+
 public class GameManager : MonoBehaviour
 {
     public int StarPoint { get; set; } = 0;
     public bool End { get; set; } = false;
-    public Text UI;
-    public Button restart;
-    public Button resume;
+
+    public Text acon;
+    public GameObject gameOver;
+    public GameObject gamePause;
     // Start is called before the first frame update
     void Start()
     {
         Time.timeScale = 1f;
+        Resolution[] resolutions = Screen.resolutions;
+        foreach (Resolution res in resolutions)
+        {
+
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        UI.text = $"STAR: {StarPoint}";
+        acon.text = $"도토리 {StarPoint}개";
         if (End)
         {
 
-            restart.gameObject.SetActive(true);
-            Time.timeScale = 0f;
+            gameOver.gameObject.SetActive(true);
+            Time.timeScale = 0.5f;
+            GameObject.Find("Player").GetComponent<Rigidbody2D>().velocity = Vector2.zero;
         }
     }
 
     public void PauseGame()
     {
         Time.timeScale = 0f;
-        restart.gameObject.SetActive(true);
-        resume.gameObject.SetActive(true);
+        gamePause.gameObject.SetActive(true);
     }
 
     public void ResumeGame()
     {
-        resume.gameObject.SetActive(false);
-        restart.gameObject.SetActive(false);
+        gamePause.gameObject.SetActive(false);
         Time.timeScale = 1f;
     }
 
     public void RestartGame()
     {
         Time.timeScale = 1f;
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        
+        GameObject.Find("SceneController").GetComponent<SceneController>().RunInGame();
+
     }
+
+
 
 }
 
