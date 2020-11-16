@@ -15,6 +15,7 @@ public class Star : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
+            Util.PlaySFX("Coin");
             GameObject.Find("GameManager").GetComponent<Score>().AcornPoint += 1;
             Instantiate(plusPoint, collision.transform.position, Quaternion.identity);
             GameObject boomObj = Instantiate(boom, transform.position, Quaternion.identity);

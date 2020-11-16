@@ -12,16 +12,24 @@ public class SceneController : MonoBehaviour
     public void RunMainMenu()
     {
         SceneManager.LoadScene("MainMenu");
+        GameObject.Find("AudioController").GetComponent<BGMController>().TurnOff(1);
+        GameObject.Find("AudioController").GetComponent<BGMController>().TurnOn(0);
+
     }
 
     public void RunInGame()
     {
         SceneManager.LoadScene("InGame");
+        GameObject.Find("AudioController").GetComponent<BGMController>().TurnOff(0);
+        GameObject.Find("AudioController").GetComponent<BGMController>().TurnOn(1);
+
     }
 
     public void RunSetting()
     {
         SceneManager.LoadScene("Setting");
+        GameObject.Find("AudioController").GetComponent<BGMController>().TurnOff(1);
+        GameObject.Find("AudioController").GetComponent<BGMController>().TurnOn(0);
     }
 
     public void DeletePopup()

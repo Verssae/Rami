@@ -23,6 +23,7 @@ public class Obstacle : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             GameObject.Find("GameManager").GetComponent<GameManager>().End = true;
+            Util.PlaySFX("GameOver");
         }
     }
 }

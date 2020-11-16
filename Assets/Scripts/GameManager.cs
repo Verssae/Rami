@@ -52,6 +52,7 @@ public class GameManager : MonoBehaviour
             Time.timeScale = 0.5f;
             GameObject.FindWithTag("Player").GetComponent<Rigidbody2D>().velocity = Vector2.zero;
             GetComponent<Score>().GameOver();
+            
         }
     }
 

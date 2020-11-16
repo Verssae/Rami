@@ -70,11 +70,12 @@ public class Movement : MonoBehaviour
                 if (state == Action.Holding || state == Action.Slipping)
                 {
                     state = Action.Gliding;
-
+                    Util.PlaySFX("Jump");
                 }
                 else if (state == Action.Gliding)
                 {
                     state = Action.Rolling;
+                    Util.PlaySFX("Rolling");
                 }
 
             }
@@ -97,11 +98,13 @@ public class Movement : MonoBehaviour
                     if (state == Action.Holding || state == Action.Slipping)
                     {
                         state = Action.Gliding;
+                        Util.PlaySFX("Jump");
 
                     }
                     else if (state == Action.Gliding)
                     {
                         state = Action.Rolling;
+                        Util.PlaySFX("Rolling");
                     }
 
                 }
@@ -111,6 +114,7 @@ public class Movement : MonoBehaviour
                     {
                         state = Action.Gliding;
                     }
+
                 }
             }
         }
@@ -127,6 +131,8 @@ public class Movement : MonoBehaviour
         SetAinm();
         SetDirection(direction);
     }
+
+
 
 
     private void FixedUpdate()
