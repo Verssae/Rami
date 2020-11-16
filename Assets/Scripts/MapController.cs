@@ -14,6 +14,7 @@ public class MapController : MonoBehaviour
     [SerializeField]
     private int volume = 0;
 
+
     private readonly Queue<GameObject> _lastmodule = new Queue<GameObject>();
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -31,7 +32,7 @@ public class MapController : MonoBehaviour
                 if (_lastmodule.Count >= volume - 1)
                 {
                     GameObject nextmodule = Instantiate(maps[Random.Range(0, maps.Length)], collision.transform.parent.parent);
-                    GameObject nextPoint = GetChildByName(collision.transform.parent.gameObject, "NextPoint");
+                    GameObject nextPoint = Util.GetChildByName(collision.transform.parent.gameObject, "NextPoint");
                     nextmodule.transform.position = nextPoint.transform.position;
                 }
                 if (_lastmodule.Count >= volume)
@@ -43,18 +44,7 @@ public class MapController : MonoBehaviour
         }
     }
 
-    private GameObject GetChildByName(GameObject obj, string name)
-    {
-        Transform child = obj.transform.Find(name);
-        if (child != null)
-        {
-            return child.gameObject;
-        } 
-        else
-        {
-            return null;
-        }
-    }
+    
 
 
 

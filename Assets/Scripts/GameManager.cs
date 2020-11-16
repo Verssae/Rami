@@ -7,11 +7,8 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    public int AcornPoint { get; set; } = 0;
+    
     public bool End { get; set; } = false;
-
-    [SerializeField]
-    private Text acorn = null;
 
     [SerializeField]
     private GameObject gameOver = null;
@@ -48,12 +45,13 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        acorn.text = $"도토리 {AcornPoint}개";
+        
         if (End)
         {
             gameOver.SetActive(true);
             Time.timeScale = 0.5f;
             GameObject.FindWithTag("Player").GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+            GetComponent<Score>().GameOver();
         }
     }
 
