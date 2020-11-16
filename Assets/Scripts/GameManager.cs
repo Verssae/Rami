@@ -7,54 +7,57 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    public int StarPoint { get; set; } = 0;
+    public int AcornPoint { get; set; } = 0;
     public bool End { get; set; } = false;
 
-    public Text acon;
-    public GameObject gameOver;
-    public GameObject gamePause;
-    // Start is called before the first frame update
-    void Start()
-    {
-        Time.timeScale = 1f;
-        Resolution[] resolutions = Screen.resolutions;
-        foreach (Resolution res in resolutions)
-        {
+    [SerializeField]
+    private Text acorn = null;
 
-        }
-    }
+    [SerializeField]
+    private GameObject gameOver = null;
 
-    // Update is called once per frame
-    void Update()
-    {
-        acon.text = $"도토리 {StarPoint}개";
-        if (End)
-        {
+    [SerializeField]
+    private GameObject gamePause = null;
 
-            gameOver.gameObject.SetActive(true);
-            Time.timeScale = 0.5f;
-            GameObject.Find("Player").GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-        }
-    }
+    [SerializeField]
+    private SceneController sceneController = null;
 
     public void PauseGame()
     {
         Time.timeScale = 0f;
-        gamePause.gameObject.SetActive(true);
+        gamePause.SetActive(true);
     }
 
     public void ResumeGame()
     {
-        gamePause.gameObject.SetActive(false);
+        gamePause.SetActive(false);
         Time.timeScale = 1f;
     }
 
     public void RestartGame()
     {
         Time.timeScale = 1f;
-        GameObject.Find("SceneController").GetComponent<SceneController>().RunInGame();
-
+        sceneController.RunInGame();
     }
+
+    private void Start()
+    {
+        Time.timeScale = 1f;
+    }
+
+
+    private void Update()
+    {
+        acorn.text = $"도토리 {AcornPoint}개";
+        if (End)
+        {
+            gameOver.SetActive(true);
+            Time.timeScale = 0.5f;
+            GameObject.FindWithTag("Player").GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+        }
+    }
+
+
 
 
 

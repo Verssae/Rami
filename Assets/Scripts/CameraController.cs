@@ -2,17 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class CameraController : MonoBehaviour
 {
-    public Transform player;
-    public float distance;
-    // Start is called before the first frame update
-    void Awake()
+    [SerializeField] 
+    private Transform player = null;
+
+    [SerializeField] 
+    private float distance = 0;
+
+    private void Awake()
     {
         Camera camera = GetComponent<Camera>();
         Rect rect = camera.rect;
-        ////5 : 16 = x : 18; x = 18 * 5 / 16
-        //Debug.Log(Screen.height);
 
         float scaleHeight = ((float)Screen.width / Screen.height) / ((float)9 / 16);
         float scaleWidth = 1f / scaleHeight;
@@ -30,8 +32,7 @@ public class CameraController : MonoBehaviour
         camera.rect = rect;
     }
 
-    // Update is called once per frame
-    void LateUpdate()
+    private void LateUpdate()
     {
         if (player)
         {

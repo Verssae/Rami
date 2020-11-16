@@ -20,7 +20,7 @@ public class Star : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            GameObject.Find("GameManager").GetComponent<GameManager>().StarPoint += 1;
+            GameObject.Find("GameManager").GetComponent<GameManager>().AcornPoint += 1;
             Destroy(gameObject);
         }
     }

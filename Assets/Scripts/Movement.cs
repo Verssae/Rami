@@ -4,36 +4,53 @@ using UnityEngine;
 
 public class Movement : MonoBehaviour
 {
+    public enum Action { Holding, Slipping, Gliding, Rolling, Ending };
+    public enum Direction { Left, Right };
 
-    public Action state;
-    public Direction direction;
-    public float slippingTime = 1f;
-    public float maxSpeed = 15f;
-
-    public float slippingSpeed = 1f;
-
-    public float glidingHPower = 2f;
-    public float glidingVPower = 3f;
-    public float rollingHPower = 1f;
-    public float rollingVPower = 2f;
+    [Header("Init State")]
 
     [SerializeField]
-    private bool isDevelopment = false;
+    private Action state = Action.Gliding;
+
+    [SerializeField]
+    private Direction direction = Direction.Left;
+
+    [Header("Movement Parameters")]
+
+    [Header("Sliping Parameters")]
+
+    [SerializeField]
+    private float slippingTime = 1f;
+
+    [SerializeField]
+    private float slippingSpeed = 1f;
+
+    [Header("Gliding Parameters")]
+
+    [SerializeField]
+    private float glidingHPower = 2f;
+
+    [SerializeField]
+    private float glidingVPower = 3f;
+
+    [Header("Rolling Parameters")]
+
+    [SerializeField]
+    private float rollingHPower = 1f;
+
+    [SerializeField]
+    private float rollingVPower = 2f;
+
+    [Header("Development Mode")]
+
+    public bool isDevelopment = false;
 
     private float holdingTime = 0f;
     private bool ticked = false;
     private int side = 0;
-    private Vector2 lastSpeed;
-    private Touch touch;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
         if (ticked)
         {
@@ -73,7 +90,7 @@ public class Movement : MonoBehaviour
         {
             if (Input.touchCount > 0)
             {
-                touch = Input.GetTouch(0);
+                Touch touch = Input.GetTouch(0);
                 if (touch.phase == TouchPhase.Began)
                 {
                     ticked = false;
@@ -98,13 +115,6 @@ public class Movement : MonoBehaviour
             }
         }
 
-
-
-
-
-
-
-
         if (direction == Direction.Right)
         {
             side = 1;
@@ -114,9 +124,8 @@ public class Movement : MonoBehaviour
             side = -1;
         }
 
-        SetAinm(state);
+        SetAinm();
         SetDirection(direction);
-        //Debug.Log(GetComponent<Rigidbody2D>().velocity.magnitude);
     }
 
 
@@ -139,61 +148,34 @@ public class Movement : MonoBehaviour
             default:
                 break;
         }
-        //if (GetComponent<Rigidbody2D>().velocity.magnitude <= maxSpeed)
-        //{
-        //    lastSpeed = GetComponent<Rigidbody2D>().velocity;
-        //}
-        //else
-        //{
-        //    GetComponent<Rigidbody2D>().velocity = lastSpeed;
-        //}
+
     }
 
-    void SetAinm(Action action)
+    private void SetAinm()
     {
-        switch (action)
+        switch (state)
         {
             case Action.Holding:
-                GetComponent<Animator>().SetBool("Holding", true);
-                GetComponent<Animator>().SetBool("Slipping", false);
-                GetComponent<Animator>().SetBool("Gliding", false);
-                GetComponent<Animator>().SetBool("Rolling", false);
-                GetComponent<Animator>().SetBool("Ending", false);
+                GetComponent<Animator>().SetInteger("State", 0);
                 break;
             case Action.Slipping:
-                GetComponent<Animator>().SetBool("Holding", false);
-                GetComponent<Animator>().SetBool("Slipping", true);
-                GetComponent<Animator>().SetBool("Gliding", false);
-                GetComponent<Animator>().SetBool("Rolling", false);
-                GetComponent<Animator>().SetBool("Ending", false);
+                GetComponent<Animator>().SetInteger("State", 1);
                 break;
             case Action.Gliding:
-                GetComponent<Animator>().SetBool("Holding", false);
-                GetComponent<Animator>().SetBool("Slipping", false);
-                GetComponent<Animator>().SetBool("Gliding", true);
-                GetComponent<Animator>().SetBool("Rolling", false);
-                GetComponent<Animator>().SetBool("Ending", false);
+                GetComponent<Animator>().SetInteger("State", 2);
                 break;
             case Action.Rolling:
-                GetComponent<Animator>().SetBool("Holding", false);
-                GetComponent<Animator>().SetBool("Slipping", false);
-                GetComponent<Animator>().SetBool("Gliding", false);
-                GetComponent<Animator>().SetBool("Rolling", true);
-                GetComponent<Animator>().SetBool("Ending", false);
+                GetComponent<Animator>().SetInteger("State", 3);
                 break;
             case Action.Ending:
-                GetComponent<Animator>().SetBool("Holding", false);
-                GetComponent<Animator>().SetBool("Slipping", false);
-                GetComponent<Animator>().SetBool("Gliding", false);
-                GetComponent<Animator>().SetBool("Rolling", false);
-                GetComponent<Animator>().SetBool("Ending", true);
+                GetComponent<Animator>().SetInteger("State", 4);
                 break;
             default:
                 break;
         }
     }
 
-    void SetDirection(Direction dir)
+    private void SetDirection(Direction dir)
     {
         switch (dir)
         {
@@ -214,7 +196,14 @@ public class Movement : MonoBehaviour
             default:
                 break;
         }
+    }  
+    
+    private void StartTimer()
+    {
+        ticked = true;
+        holdingTime = 0;
     }
+
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -239,15 +228,8 @@ public class Movement : MonoBehaviour
     }
 
 
-    void StartTimer()
-    {
-        ticked = true;
-        holdingTime = 0;
-    }
 
 
 
 }
 
-public enum Action { Holding, Slipping, Gliding, Rolling, Ending };
-public enum Direction { Left, Right };

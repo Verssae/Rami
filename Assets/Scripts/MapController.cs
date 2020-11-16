@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Map : MonoBehaviour
+public class MapController : MonoBehaviour
 {
     [Header("로드 할 맵 모듈 모음")]
 
@@ -20,20 +20,19 @@ public class Map : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Start"))
         {
+            if (GetComponent<Movement>().isDevelopment)
+            {
+                Debug.Log($"Current Module: {collision.transform.parent.name}");
+            }
+            
             if (collision.transform.parent.GetComponent<ModuleInfo>().pass == false)
             {
                 collision.transform.parent.GetComponent<ModuleInfo>().pass = true;
                 if (_lastmodule.Count >= volume - 1)
                 {
                     GameObject nextmodule = Instantiate(maps[Random.Range(0, maps.Length)], collision.transform.parent.parent);
-                    GameObject newpoint = collision.transform.parent.GetChild(5).gameObject;
-                    Debug.Log(newpoint.name);
-                    nextmodule.transform.position = newpoint.transform.position;
-                    //nextmodule.transform.GetChild(0).tag = "Start";
-                    //nextmodule.transform.GetChild(1).tag = "LTree";
-                    //nextmodule.transform.GetChild(2).tag = "RTree";
-                    //nextmodule.transform.GetChild(3).tag = "Obstacle";
-                    //nextmodule.transform.GetChild(4).tag = "Star";
+                    GameObject nextPoint = GetChildByName(collision.transform.parent.gameObject, "NextPoint");
+                    nextmodule.transform.position = nextPoint.transform.position;
                 }
                 if (_lastmodule.Count >= volume)
                 {
@@ -41,6 +40,19 @@ public class Map : MonoBehaviour
                 }
                 _lastmodule.Enqueue(collision.transform.parent.gameObject);
             }
+        }
+    }
+
+    private GameObject GetChildByName(GameObject obj, string name)
+    {
+        Transform child = obj.transform.Find(name);
+        if (child != null)
+        {
+            return child.gameObject;
+        } 
+        else
+        {
+            return null;
         }
     }
 
