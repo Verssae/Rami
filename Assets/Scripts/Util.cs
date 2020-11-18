@@ -23,10 +23,10 @@ public class Util
     public static void PlaySFX(string name)
     {
         AudioSource sfx = GameObject.Find("SFX").transform.Find(name).GetComponent<AudioSource>();
-        if (!sfx.isPlaying)
-        {
-            sfx.Play();
-        }
+        
+        
+         sfx.Play();
+        
     }
 }
 

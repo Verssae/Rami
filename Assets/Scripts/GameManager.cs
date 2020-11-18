@@ -21,18 +21,21 @@ public class GameManager : MonoBehaviour
 
     public void PauseGame()
     {
+        Util.PlaySFX("Click");
         Time.timeScale = 0f;
         gamePause.SetActive(true);
     }
 
     public void ResumeGame()
     {
+        Util.PlaySFX("Click");
         gamePause.SetActive(false);
         Time.timeScale = 1f;
     }
 
     public void RestartGame()
     {
+        Util.PlaySFX("Click");
         Time.timeScale = 1f;
         sceneController.RunInGame();
     }

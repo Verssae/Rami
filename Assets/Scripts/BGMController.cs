@@ -7,7 +7,6 @@ public class BGMController : MonoBehaviour
 {
     public static BGMController instance;
 
-
     private void Awake()
     {
         if (instance != null)

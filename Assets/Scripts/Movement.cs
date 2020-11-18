@@ -218,12 +218,14 @@ public class Movement : MonoBehaviour
             state = Action.Holding;
             direction = Direction.Right;
             StartTimer();
+            Util.PlaySFX("Landing");
         }
         if (collision.gameObject.CompareTag("RTree") && !ticked)
         {
             state = Action.Holding;
             direction = Direction.Left;
             StartTimer();
+            Util.PlaySFX("Landing");
         }
 
         if (collision.gameObject.CompareTag("Obstacle"))
