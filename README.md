@@ -1,6 +1,6 @@
 # 날다, 라미
 
-![icon](Assets/Sprites/icon.png)
+![icon](./Assets/Sprites/icon.png)
 
 ## Git Contributions
 
