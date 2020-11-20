@@ -1,6 +1,6 @@
 # 날다, 라미
 
-![icon](./Assets/Sprites/icon.png)
+![icon](https://github.com/Verssae/Rami/blob/main/Assets/Sprites/Icon.png)
 
 ## Git Contributions
 
