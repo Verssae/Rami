@@ -19,11 +19,14 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private SceneController sceneController = null;
 
+    private bool popuped = false;
+
     public void PauseGame()
     {
         Util.PlaySFX("Click");
         Time.timeScale = 0f;
         gamePause.SetActive(true);
+        popuped = true;
     }
 
     public void ResumeGame()
@@ -31,6 +34,7 @@ public class GameManager : MonoBehaviour
         Util.PlaySFX("Click");
         gamePause.SetActive(false);
         Time.timeScale = 1f;
+        popuped = false;
     }
 
     public void RestartGame()
@@ -55,8 +59,44 @@ public class GameManager : MonoBehaviour
             Time.timeScale = 0.5f;
             GameObject.FindWithTag("Player").GetComponent<Rigidbody2D>().velocity = Vector2.zero;
             GetComponent<Score>().GameOver();
+            popuped = true;
 
         }
+
+        if (Application.platform == RuntimePlatform.Android)
+        {
+            if (Input.GetKey(KeyCode.Home))
+            {
+                PauseGame();
+            }
+            else if (Input.GetKey(KeyCode.Escape))
+            {
+                if (popuped)
+                {
+                    if (gameOver.activeSelf)
+                    {
+                        sceneController.RunMainMenu();
+                    }
+
+                    if (gamePause.activeSelf)
+                    {
+                        ResumeGame();
+                    }
+                    
+                }
+                else
+                {
+                    PauseGame();
+                }
+                
+            }
+            else if (Input.GetKey(KeyCode.Menu))
+            {
+                //menu button
+            }
+        }
+
+
     }
 
 

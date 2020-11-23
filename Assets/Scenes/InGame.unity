@@ -1090,7 +1090,7 @@ MonoBehaviour:
   glidingVPower: 3
   rollingHPower: 4
   rollingVPower: 10
-  isDevelopment: 1
+  isDevelopment: 0
 --- !u!95 &783178607
 Animator:
   serializedVersion: 3
@@ -1692,7 +1692,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.0000076294, y: 883}
+  m_AnchoredPosition: {x: 0, y: 883}
   m_SizeDelta: {x: 99.48074, y: 83.793915}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1280845347
@@ -11600,7 +11600,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 330.21, y: 144}
+  m_AnchoredPosition: {x: 217.7, y: 136.2}
   m_SizeDelta: {x: 312.9698, y: 109.84833}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2072660321
