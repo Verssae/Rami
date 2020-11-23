@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 1748802174699672519}
   - component: {fileID: 6061533266903588522}
   - component: {fileID: 3389359368745593838}
-  - component: {fileID: 4983196194172841353}
   - component: {fileID: 3696955454845817530}
   m_Layer: 0
   m_Name: Gator
@@ -124,18 +123,6 @@ PolygonCollider2D:
       - {x: 0.19999999, y: -0.114999995}
       - {x: 0.19999999, y: -0.024999999}
       - {x: 0.19, y: -0.015}
---- !u!114 &4983196194172841353
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3409718867525354039}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 81b6fc872278dc14395247c28cbdfcb1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!95 &3696955454845817530
 Animator:
   serializedVersion: 3

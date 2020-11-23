@@ -57,8 +57,9 @@ public class Movement : MonoBehaviour
             holdingTime += Time.deltaTime;
             if (holdingTime >= slippingTime)
             {
-                state = Action.Slipping;
                 ticked = false;
+                state = Action.Slipping;
+                
             }
         }
 
@@ -213,14 +214,14 @@ public class Movement : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("LTree") && !ticked)
+        if (collision.gameObject.CompareTag("LTree") && !ticked && state != Action.Slipping)
         {
             state = Action.Holding;
             direction = Direction.Right;
             StartTimer();
             Util.PlaySFX("Landing");
         }
-        if (collision.gameObject.CompareTag("RTree") && !ticked)
+        if (collision.gameObject.CompareTag("RTree") && !ticked && state != Action.Slipping)
         {
             state = Action.Holding;
             direction = Direction.Left;
@@ -232,6 +233,7 @@ public class Movement : MonoBehaviour
         {
             state = Action.Ending;
             GameObject.Find("GameManager").GetComponent<GameManager>().End = true;
+            Util.PlaySFX("GameOver");
         }
     }
 
