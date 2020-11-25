@@ -12,6 +12,6 @@ git-lfs가 적용되는 파일 목록은 `.gitattributes`에 있습니다. (예:
 
 * 플랫폼 : 안드로이드
   * 파일 > 빌드 설정 > 안드로이드 > Switch Platform
-* 해상도 : 9 : 16 Portrait
-  * Game 윈도우 > Free Aspect 라 되어있는 해상도 설정 부분 > 16 : 9 Portrait (9 : 16) 또는 1920x1080 Portrait (1080x1920)
+* 해상도 : 9 : 20 Portrait 기준으로 하지만, 해상도 비율에 따라 카메라 orthogonal size가 변경되어 해상도 대응됨
+  * Game 윈도우 > Free Aspect 라 되어있는 해상도 설정 부분 > 9:20, 9:19, 9:16 등 다양한 해상도 테스트 요망
 
