@@ -1,5 +1,7 @@
 # 날다, 라미
 
+[Play 스토어 다운로드](https://play.google.com/store/apps/details?id=com.CucumberSeongJu.Rami)
+
 ![icon](https://github.com/Verssae/Rami/blob/main/Assets/Sprites/Icon.png)
 
 ## Git Contributions
