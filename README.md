@@ -2,7 +2,7 @@
 
 ~~[Play 스토어](https://play.google.com/store/apps/details?id=com.CucumberSeongJu.Rami)~~ (No more maintained)
 
-![icon](./Icon.png)
+![icon](./Assets/Sprites/Icon.png)
 
 ## Build Settings
 
