@@ -4,6 +4,9 @@
 
 ![icon](./Assets/Sprites/Icon.png)
 
+## Play Video
+
+[![Video Title](https://img.youtube.com/vi/dygD1wzavr8/0.jpg)](https://www.youtube.com/watch?v=dygD1wzavr8)
 ## Build Settings
 
 * 플랫폼 : 안드로이드
